@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31515.178
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QL_LopHocPhan", "QL_LopHocPhan\QL_LopHocPhan.csproj", "{DEC12BD6-1D6D-4AC6-ADB1-9A49E88DF603}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DEC12BD6-1D6D-4AC6-ADB1-9A49E88DF603}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DEC12BD6-1D6D-4AC6-ADB1-9A49E88DF603}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DEC12BD6-1D6D-4AC6-ADB1-9A49E88DF603}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DEC12BD6-1D6D-4AC6-ADB1-9A49E88DF603}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F08421B3-87C2-4BA2-9AF1-1FCBCC777635}
+	EndGlobalSection
+EndGlobal

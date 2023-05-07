@@ -1,0 +1,74 @@
+﻿<style>
+    table {
+        font-family: arial, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    td, th {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+    }
+
+    tr:nth-child(even) {
+        background-color: #dddddd;
+    }
+</style>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Quản lý Sinh viên</h2>
+<table id="tbl_data">
+    <tr>
+        <td>    </td>
+    </tr>
+</table>
+
+<script>
+    function getList() {
+        $.ajax({
+            url: "/SinhVien/GetList",
+            method: "POST",
+            success: function (result) {
+                var obj = JSON.parse(result);
+                console.log(obj);
+                $('#tbl_data').html("\
+                    <thead>\
+                            <tr align='center'>\
+                                <th>STT</th>\
+                                <th>MSSV</th>\
+                                <th>HoTen</th>\
+                                <th>Địa chỉ</th>\
+                                <th>Khóa học</th>\
+                                <th>Lớp quản lý</th>\
+                                <th>Ngày sinh</th>\
+                                <th>Giới tính</th>\
+                            </tr>\
+                        </thead>\
+                    <tbody id=\"tbl_data_printer\"></tbody>\
+                    ");
+                let htmlResult = "";
+               
+                for (let i = 0; i < obj.length; i++) {
+                    htmlResult += "\
+                                <tr>\
+                                    <td>" +i+ "</td>\
+                                    <td>" + obj[i].MSSV + "</td>\
+                                    <td>" + obj[i].HoTen + "</td>\
+                                    <td>" + obj[i].DiaChi + "</td>\
+                                    <td>" + obj[i].KhoaHoc + "</td>\
+                                    <td>" + obj[i].LopQuanLy + "</td>\
+                                    <td>" + obj[i].NgaySinh + "</td>\
+                                    <td>" + obj[i].GioiTinh + "</td>\
+                                    ";
+                }
+                $('#tbl_data_printer').append(htmlResult);
+            }
+        }
+    )}
+    $(function () {
+        getList();
+    });
+</script>
