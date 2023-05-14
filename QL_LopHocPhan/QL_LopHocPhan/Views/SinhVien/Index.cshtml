@@ -16,10 +16,10 @@
     }
 </style>
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Danh sách sinh viên";
 }
 
-<h2>Quản lý Sinh viên</h2>
+
 <table id="tbl_data">
     <tr>
         <td>    </td>
@@ -50,11 +50,11 @@
                     <tbody id=\"tbl_data_printer\"></tbody>\
                     ");
                 let htmlResult = "";
-               
+
                 for (let i = 0; i < obj.length; i++) {
                     htmlResult += "\
                                 <tr>\
-                                    <td>" +i+ "</td>\
+                                    <td>" + (i+1) + "</td>\
                                     <td>" + obj[i].MSSV + "</td>\
                                     <td>" + obj[i].HoTen + "</td>\
                                     <td>" + obj[i].DiaChi + "</td>\

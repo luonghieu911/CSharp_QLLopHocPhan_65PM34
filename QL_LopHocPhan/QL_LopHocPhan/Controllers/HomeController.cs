@@ -10,6 +10,8 @@ namespace QL_LopHocPhan.Controllers
     {
         public ActionResult Index()
         {
+            ViewBag.Title = "Danh sách sinh viên";
+
             return View();
         }
 

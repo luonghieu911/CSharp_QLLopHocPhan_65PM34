@@ -24,5 +24,16 @@ namespace QL_LopHocPhan.Controllers
             var dssv = db.tbl_SinhViens;
             return JsonConvert.SerializeObject(dssv);
         }
+
+        public ActionResult Create()
+        {
+            return View();
+        }
+        public string PostCreate()
+        {
+            //xử lý thêm
+            return "Thêm mới sinh viên thành công";
+        }
+
     }
 }

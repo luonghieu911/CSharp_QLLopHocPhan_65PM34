@@ -1,0 +1,60 @@
+﻿@{
+    ViewBag.Title = "Thêm mới sinh viên";
+}
+<form id="form_act" method="post">
+    <div class="card-body">
+        <div class="form-group">
+            <label for="exampleInputEmail1">Mã số sinh viên</label>
+            <input type="text" name="MSSV" class="form-control" id="MSSV" placeholder="Nhập MSSV">
+        </div>
+        <div class="form-group">
+            <label for="exampleInputEmail1">Họ tên</label>
+            <input type="text" name="HoTen" class="form-control" id="HoTen" placeholder="Nhập Họ tên sinh viên">
+        </div>
+        <div class="form-group">
+            <label for="exampleInputEmail1">Địa chỉ</label>
+            <input type="text" name="DiaChi" class="form-control" id="MSSV" placeholder="Nhập Địa chỉ">
+        </div>
+        <div class="form-group">
+            <label for="exampleInputEmail1">Khóa học</label>
+            <input type="text" name="KhoaHoc" class="form-control" id="KhoaHoc" placeholder="Nhập Khóa học">
+        </div>
+        <div class="form-group">
+            <label for="exampleInputEmail1">Lớp quản lý</label>
+            <input type="text" name="LopQuanLy" class="form-control" id="LopQuanLy" placeholder="Nhập Lớp quản lý">
+        </div>
+        <div class="form-group">
+            <label for="exampleInputEmail1">Ngày sinh</label>
+            <input type="date" name="NgaySinh" class="form-control" id="NgaySinh" placeholder="Nhập Ngày sinh">
+        </div>
+        <div class="form-group">
+            <label for="exampleInputEmail1">Giới tính</label>
+            <select  class="form-control" id="Gioitinh" name="Gioitinh">
+                <option value="Nam">Nam</option>
+                <option value="Nu">Nữ</option>
+                <option value="Khac">Khác</option>
+            </select>
+        </div>
+    </div>
+    <!-- /.card-body -->
+    <div class="card-footer">
+        <button onclick="Create()" class="btn btn-primary">Submit</button>
+    </div>
+</form>
+<script>
+    function Create() {
+        console.log('alo');
+        let form = $('#form_act')[0];
+        let formData = new FormData(form);
+        $.ajax({
+            url: "/SinhVien/PostCreate",
+            method: "POST",
+            data: formData,
+            success: function (result, status, xhr) {
+               let rs = JSON.parse(result);*/
+                console.log(result);
+            },
+        });
+    }
+</script>
+
