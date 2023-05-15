@@ -138,6 +138,8 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\toastr.css" />
+    <Content Include="Content\toastr.min.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -149,6 +151,8 @@
       <LastGenOutput>Database.designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </Content>
+    <Content Include="Content\toastr.scss" />
+    <Content Include="Content\toastr.less" />
     <None Include="Models\Database.dbml.layout">
       <DependentUpon>Database.dbml</DependentUpon>
     </None>
@@ -163,6 +167,8 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\toastr.js" />
+    <Content Include="Scripts\toastr.min.js" />
     <Content Include="theme\dist\css\adminlte.css" />
     <Content Include="theme\dist\css\adminlte.min.css" />
     <Content Include="theme\dist\css\alt\adminlte.components.css" />
@@ -2233,6 +2239,8 @@
     <Content Include="theme\plugins\summernote\summernote.js.map" />
     <Content Include="theme\plugins\summernote\summernote.min.js.map" />
     <Content Include="theme\plugins\toastr\toastr.js.map" />
+    <Content Include="Views\Shared\Patial\Menu.cshtml" />
+    <Content Include="Views\SinhVien\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -1,7 +1,7 @@
 ﻿@{
     ViewBag.Title = "Thêm mới sinh viên";
 }
-<form id="form_act" method="post">
+<form id="form_act" enctype="multipart/form-data" method="post">
     <div class="card-body">
         <div class="form-group">
             <label for="exampleInputEmail1">Mã số sinh viên</label>
@@ -29,7 +29,7 @@
         </div>
         <div class="form-group">
             <label for="exampleInputEmail1">Giới tính</label>
-            <select  class="form-control" id="Gioitinh" name="Gioitinh">
+            <select class="form-control" id="Gioitinh" name="Gioitinh">
                 <option value="Nam">Nam</option>
                 <option value="Nu">Nữ</option>
                 <option value="Khac">Khác</option>
@@ -38,23 +38,36 @@
     </div>
     <!-- /.card-body -->
     <div class="card-footer">
-        <button onclick="Create()" class="btn btn-primary">Submit</button>
+        <button type="button" id="btn_insert" class="btn btn-primary">Thêm mới</button>
     </div>
 </form>
 <script>
     function Create() {
-        console.log('alo');
-        let form = $('#form_act')[0];
-        let formData = new FormData(form);
-        $.ajax({
-            url: "/SinhVien/PostCreate",
-            method: "POST",
-            data: formData,
-            success: function (result, status, xhr) {
-               let rs = JSON.parse(result);*/
-                console.log(result);
-            },
-        });
+        if (confirm("Xác nhận thêm sinh viên")) {
+            let form = $('#form_act')[0];
+            let formData = new FormData(form);
+            console.log(formData);
+            $.ajax({
+                url: "/Sinhvien/PostCreate",
+                method: "POST",
+                processData: false,
+                contentType: false,
+                data: formData,
+                success: function (result, status, xhr) {
+                    //let rs = JSON.parse(result);
+                    //console.log(result);
+                    toastr.success(result);
+                },
+                error: function () {
+                    console.log("Mất kết nối với máy chủ!");
+                }
+            });
+        }
     }
+    $(function () {
+        $('#btn_insert').click(function () {
+            Create();
+        });
+    });
 </script>
 

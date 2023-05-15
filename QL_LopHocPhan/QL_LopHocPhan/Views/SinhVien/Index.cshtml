@@ -45,6 +45,7 @@
                                 <th>Lớp quản lý</th>\
                                 <th>Ngày sinh</th>\
                                 <th>Giới tính</th>\
+                                <th>Thao tác</th>\
                             </tr>\
                         </thead>\
                     <tbody id=\"tbl_data_printer\"></tbody>\
@@ -62,6 +63,7 @@
                                     <td>" + obj[i].LopQuanLy + "</td>\
                                     <td>" + obj[i].NgaySinh + "</td>\
                                     <td>" + obj[i].GioiTinh + "</td>\
+                                    <td><a class=\"btn btn-primary mr-2\"><i class=\"fas fa-edit\"></i></a><a class=\"btn btn-danger\"><i class=\"fas fa-trash\"></></a></td>\
                                     ";
                 }
                 $('#tbl_data_printer').append(htmlResult);

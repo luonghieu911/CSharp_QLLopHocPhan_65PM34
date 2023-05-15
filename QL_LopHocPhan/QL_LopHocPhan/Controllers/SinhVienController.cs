@@ -5,6 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Newtonsoft.Json;
+using System.Globalization;
 
 namespace QL_LopHocPhan.Controllers
 {
@@ -29,9 +30,35 @@ namespace QL_LopHocPhan.Controllers
         {
             return View();
         }
-        public string PostCreate()
-        {
-            //xử lý thêm
+
+        [HttpPost]
+        public string PostCreate() {
+            //xử lý thêm mới
+            try
+            {
+                string hoTen = Request["HoTen"];
+                string mSSV = Request["MSSV"];
+                string diaChi = Request["DiaChi"];
+                string khoaHoc = Request["KhoaHoc"];
+                string lopQuanLy = Request["LopQuanLy"];
+                string ngaySinh = Request["NgaySinh"];
+                string gioiTinh = Request["GioiTinh"];
+
+                tbl_SinhVien newSV = new tbl_SinhVien();
+                newSV.MSSV = mSSV;
+                newSV.HoTen = hoTen;
+                newSV.KhoaHoc = khoaHoc;
+                newSV.LopQuanLy = lopQuanLy;
+                newSV.DiaChi = diaChi;
+                newSV.NgaySinh = DateTime.ParseExact(ngaySinh, "yyyy-MM-dd",CultureInfo.InvariantCulture);
+                newSV.GioiTinh = gioiTinh;
+                db.tbl_SinhViens.InsertOnSubmit(newSV);
+                db.SubmitChanges();
+            }
+            catch (Exception ex)
+            {
+                return "Thêm mới sinh viên không thành công. Lỗi: "+ex.Message;
+            }
             return "Thêm mới sinh viên thành công";
         }
 
