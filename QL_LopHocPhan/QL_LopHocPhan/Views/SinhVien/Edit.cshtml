@@ -1,11 +1,14 @@
-﻿@{
-    ViewBag.Title = "Thêm mới sinh viên";
+﻿
+@{
+    ViewBag.Title = "Sửa thông tin sinh viên";
+    string mssv = Request["id"];
 }
+<input type="hidden" id="MSSV-Hidden" name="MSSV-Hidden" value="@mssv" />
 <form id="form_act" enctype="multipart/form-data" method="post">
     <div class="card-body">
         <div class="form-group">
             <label for="exampleInputEmail1">Mã số sinh viên</label>
-            <input type="text" name="MSSV" class="form-control" id="MSSV" placeholder="Nhập MSSV">
+            <input type="text" readonly name="MSSV" class="form-control" id="MSSV" placeholder="Nhập MSSV">
         </div>
         <div class="form-group">
             <label for="exampleInputEmail1">Họ tên</label>
@@ -13,7 +16,7 @@
         </div>
         <div class="form-group">
             <label for="exampleInputEmail1">Địa chỉ</label>
-            <input type="text" name="DiaChi" class="form-control" id="MSSV" placeholder="Nhập Địa chỉ">
+            <input type="text" name="DiaChi" class="form-control" id="DiaChi" placeholder="Nhập Địa chỉ">
         </div>
         <div class="form-group">
             <label for="exampleInputEmail1">Khóa học</label>
@@ -38,17 +41,43 @@
     </div>
     <!-- /.card-body -->
     <div class="card-footer">
-        <button type="button" id="btn_insert" class="btn btn-primary">Thêm mới</button>
+        <button type="button" id="btn_update" class="btn btn-primary">Cập nhật</button>
     </div>
 </form>
 <script>
-    function Create() {
-        if (confirm("Xác nhận thêm sinh viên")) {
+    function FillData(obj) {
+        $('#MSSV').val(obj.MSSV);
+        $('#HoTen').val(obj.HoTen);
+        $('#DiaChi').val(obj.DiaChi);
+        $('#KhoaHoc').val(obj.KhoaHoc);
+        $('#LopQuanLy').val(obj.LopQuanLy);
+        $('#NgaySinh').val(ParseInputDate(obj.NgaySinh));
+        $('#Gioitinh').val(obj.GioiTinh);
+    }
+    function GetObj() {
+        var mssv = $('#MSSV-Hidden').val();
+        $.ajax({
+            url: "/Sinhvien/GetObject",
+            method: "POST",
+            data: { mssv },
+            success: function (result, status, xhr) {
+                let rs = JSON.parse(result);
+                console.log(rs);
+                FillData(rs);
+            },
+            error: function () {
+                toastr.error("Mất kết nối với máy chủ!");
+            }
+        });
+    }
+
+    function Update() {
+        if (confirm("Xác nhận cập nhật thông tin sinh viên")) {
             let form = $('#form_act')[0];
             let formData = new FormData(form);
             console.log(formData);
             $.ajax({
-                url: "/Sinhvien/PostCreate",
+                url: "/Sinhvien/PostEdit",
                 method: "POST",
                 processData: false,
                 contentType: false,
@@ -69,10 +98,17 @@
             });
         }
     }
+
+    function ParseInputDate(str) {
+        str = str.split('T')[0];
+        result = str;
+        return result;
+    }
     $(function () {
-        $('#btn_insert').click(function () {
-            Create();
+        $('#btn_update').click(function () {
+            Update();
         });
+        GetObj();
     });
 </script>
 

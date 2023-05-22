@@ -55,22 +55,53 @@
                 for (let i = 0; i < obj.length; i++) {
                     htmlResult += "\
                                 <tr>\
-                                    <td>" + (i+1) + "</td>\
-                                    <td>" + obj[i].MSSV + "</td>\
-                                    <td>" + obj[i].HoTen + "</td>\
+                                    <td>" + (i + 1) + "</td>\
+                                    <td class ='MSSV'>" + obj[i].MSSV + "</td>\
+                                    <td class='HoTen'>" + obj[i].HoTen + "</td>\
                                     <td>" + obj[i].DiaChi + "</td>\
                                     <td>" + obj[i].KhoaHoc + "</td>\
                                     <td>" + obj[i].LopQuanLy + "</td>\
                                     <td>" + obj[i].NgaySinh + "</td>\
                                     <td>" + obj[i].GioiTinh + "</td>\
-                                    <td><a class=\"btn btn-primary mr-2\"><i class=\"fas fa-edit\"></i></a><a class=\"btn btn-danger\"><i class=\"fas fa-trash\"></></a></td>\
+                                    <td>\
+                                    <a href=\"/Sinhvien/Edit?id="+ obj[i].MSSV + "\"class=\"btn btn-primary mr-2\"><i class=\"fas fa-edit\"></i></a>\
+                                    <button onclick=\"Delete(this)\" class=\"btn btn-danger\"><i class=\"fas fa-trash\"></i></button>\
+                                    </td>\
                                     ";
                 }
                 $('#tbl_data_printer').append(htmlResult);
             }
         }
-    )}
-    $(function () {
-        getList();
-    });
+        )
+    }
+
+    function Delete(ele) {
+        var mssv = $(ele).parents("tr").find(".MSSV").text();
+        var name = $(ele).parents("tr").find(".HoTen").text();
+        console.log(mssv);
+        if (confirm("Xác nhận xóa sinh viên:" + name)) {
+            $.ajax({
+                url: "/Sinhvien/Delete",
+                method: "POST",
+                data: { mssv },
+                success: function (result, status, xhr) {
+                    let rs = JSON.parse(result);
+                    console.log(rs);
+                    if (rs.ErrCode == 1) {
+                        toastr.success(rs.Message);
+                        location.reload();   
+                    }
+                    else {
+                        toastr.error(rs.Message);
+                    }
+                },
+                error: function () {
+                    toastr.error("Mất kết nối với máy chủ!");
+                }
+            });
+        }
+    }
+        $(function () {
+            getList();
+        });
 </script>

@@ -131,6 +131,8 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Database.dbml</DependentUpon>
     </Compile>
+    <Compile Include="Models\EnumErrCode.cs" />
+    <Compile Include="Models\Result_ett.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -167,6 +169,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\script.js" />
     <Content Include="Scripts\toastr.js" />
     <Content Include="Scripts\toastr.min.js" />
     <Content Include="theme\dist\css\adminlte.css" />
@@ -2241,6 +2244,7 @@
     <Content Include="theme\plugins\toastr\toastr.js.map" />
     <Content Include="Views\Shared\Patial\Menu.cshtml" />
     <Content Include="Views\SinhVien\Create.cshtml" />
+    <Content Include="Views\SinhVien\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
